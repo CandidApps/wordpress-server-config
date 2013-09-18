@@ -1,3 +1,5 @@
+# SOURCE: http://ocaoimh.ie/2011/08/09/speed-up-wordpress-with-apache-and-varnish/
+
 # Called after a document has been successfully retrieved from the backend.
 sub vcl_fetch {
     # Uncomment to make the default cache "time to live" is 5 minutes, handy 
