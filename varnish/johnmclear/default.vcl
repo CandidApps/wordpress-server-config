@@ -1,3 +1,5 @@
+# SOURCE: https://github.com/JohnMcLear/Wordpress-Varnish-VCL/blob/master/default.vcl
+
 // Imports
 import std; // import logging
 
