@@ -48,7 +48,7 @@ sub vcl_recv {
 sub vcl_fetch {
 
   if (beresp.status == 404 || beresp.status == 503 || beresp.status >= 500) {
-    set beresp.ttl = 0s;
+    set beresp.ttl = 0m;
     return(hit_for_pass);
   }
 
@@ -59,12 +59,12 @@ sub vcl_fetch {
 
   # Don't cache .xml files (e.g. sitemap)
   if (req.url ~ "\.(xml)$") {
-    set beresp.ttl   = 0s;
+    set beresp.ttl = 0m;
   }
 
   # Cache HTML
   # if (req.url ~ "\.(html|htm)$") {
-  #   set beresp.ttl   = 60m;
+  #   set beresp.ttl = 60m;
   # }
 
   remove beresp.http.set-cookie;
