@@ -44,6 +44,16 @@ sub vcl_recv {
 }
 
 
+# Remove some unnecessary headers
+sub vcl_deliver {
+  remove resp.http.Server;
+  remove resp.http.X-Powered-By;
+  remove resp.http.X-Varnish;
+  remove resp.http.Age;
+  remove resp.http.Via;
+}
+
+
 # Called after a document has been successfully retrieved from the backend
 sub vcl_fetch {
 
