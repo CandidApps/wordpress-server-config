@@ -1,3 +1,5 @@
+# SOURCE: http://wordpress.org/plugins/w3-total-cache/
+
 # BEGIN W3TC Browser Cache
 <IfModule mod_mime.c>
     AddType text/css .css
