@@ -11,12 +11,13 @@ acl purge {
 # Called when a request is received
 sub vcl_recv {
 
-  if (req.request == "BAN") {
-    if(!client.ip ~ purge) {
+  # Purge WordPress requests for purge
+  if (req.request == "PURGE") {
+    if (!client.ip ~ purge) {
       error 405 "Not allowed.";
     }
-    ban("req.url ~ "+req.url+" && req.http.host == "+req.http.host);
-    error 200 "Banned.";
+    ban("req.url = " + req.url + " && req.http.host = " + req.http.host);
+    error 200 "Purged.";
   }
 
   if (req.request != "GET" &&
