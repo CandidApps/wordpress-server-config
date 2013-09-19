@@ -16,7 +16,7 @@ sub vcl_recv {
     if (!client.ip ~ purge) {
       error 405 "Not allowed.";
     }
-    ban("req.url = " + req.url + " && req.http.host = " + req.http.host);
+    ban("req.url ~ ^" + req.url + "$ && req.http.host == " + req.http.host);
     error 200 "Purged.";
   }
 
@@ -35,7 +35,7 @@ sub vcl_recv {
   }
 
   #Requests for login, admin, sign up, preview, password protected posts, admin-ajax or other ajax requests
-  if (req.url ~ "(wp-login|wp-admin|wp-signup|preview=true|admin-ajax.php)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest" || req.url ~ "nocache" || req.url ~ "(control.php|wp-comments-post.php|wp-login.php|bb-login.php|bb-reset-password.php|register.php)") {
+  if (req.url ~ "(wp-login|wp-admin|wp-signup|wp-comments-post.php|wp-cron.php|admin-ajax.php|xmlrpc.php|preview=true)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest" || req.url ~ "nocache" || req.url ~ "(control.php|wp-comments-post.php|wp-login.php|bb-login.php|bb-reset-password.php|register.php)") {
     return (pass);
   }
 
@@ -64,7 +64,7 @@ sub vcl_fetch {
   }
 
   # Requests for login, admin, sign up, preview, password protected posts, admin-ajax or other ajax requests
-  if (req.url ~ "(wp-login|wp-admin|wp-signup|preview=true|admin-ajax.php)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest" || req.url ~ "nocache" || req.url ~ "(control.php|wp-comments-post.php|wp-login.php|bb-login.php|bb-reset-password.php|register.php)") {
+  if (req.url ~ "(wp-login|wp-admin|wp-signup|wp-comments-post.php|wp-cron.php|admin-ajax.php|xmlrpc.php|preview=true)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest" || req.url ~ "nocache" || req.url ~ "(control.php|wp-comments-post.php|wp-login.php|bb-login.php|bb-reset-password.php|register.php)") {
     return (hit_for_pass);
   }
 
