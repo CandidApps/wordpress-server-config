@@ -36,7 +36,7 @@ sub vcl_recv {
   }
 
   #Requests for login, admin, sign up, preview, password protected posts, admin-ajax or other ajax requests
-  if (req.url ~ "(wp-login|wp-admin|wp-signup|wp-comments-post.php|wp-cron.php|admin-ajax.php|xmlrpc.php|preview=true)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest" || req.url ~ "nocache" || req.url ~ "(control.php|wp-comments-post.php|wp-login.php|bb-login.php|bb-reset-password.php|register.php)") {
+  if (req.url ~ "(wp-login|wp-admin|wp-signup|wp-comments-post.php|wp-cron.php|admin-ajax.php|xmlrpc.php|preview=true|nocache|control.php|bb-login.php|bb-reset-password.php|register.php)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest") {
     return (pass);
   }
 
@@ -65,7 +65,7 @@ sub vcl_fetch {
   }
 
   # Requests for login, admin, sign up, preview, password protected posts, admin-ajax or other ajax requests
-  if (req.url ~ "(wp-login|wp-admin|wp-signup|wp-comments-post.php|wp-cron.php|admin-ajax.php|xmlrpc.php|preview=true)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest" || req.url ~ "nocache" || req.url ~ "(control.php|wp-comments-post.php|wp-login.php|bb-login.php|bb-reset-password.php|register.php)") {
+  if (req.url ~ "(wp-login|wp-admin|wp-signup|wp-comments-post.php|wp-cron.php|admin-ajax.php|xmlrpc.php|preview=true|nocache|control.php|bb-login.php|bb-reset-password.php|register.php)" || req.http.Cookie ~ "(wp-postpass|wordpress_logged_in|comment_author_)" || req.http.X-Requested-With == "XMLHttpRequest") {
     return (hit_for_pass);
   }
 
