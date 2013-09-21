@@ -6,7 +6,8 @@ if ( isset( $_SERVER[ "HTTP_X_FORWARDED_FOR" ] ) ) {
 	$_SERVER[ 'REMOTE_ADDR' ] = $_SERVER[ "HTTP_X_FORWARDED_FOR" ];
 }
 
-# Set cookie domain
+# Set cookie domain so that cookies aren't sent with static content
+# Only works if static content is served from a different domain
 define( 'COOKIE_DOMAIN', '.example.com' );
 
 # Disable post revisions
