@@ -13,6 +13,10 @@ acl purge {
 sub vcl_recv {
 
   # Send client IP with X-Forwarded-For HTTP header
+  #
+  # Sources:
+  # http://systemsarchitect.net/boost-wordpress-performance-with-varnish-cache/
+  # http://ocaoimh.ie/2011/08/09/speed-up-wordpress-with-apache-and-varnish/
   remove req.http.X-Forwarded-For;
   set req.http.X-Forwarded-For = client.ip;
 
