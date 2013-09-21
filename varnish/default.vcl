@@ -12,6 +12,10 @@ acl purge {
 # Called when a request is received
 sub vcl_recv {
 
+  # Send client IP with X-Forwarded-For HTTP header
+  remove req.http.X-Forwarded-For;
+  set req.http.X-Forwarded-For = client.ip;
+
   # Purge WordPress requests for purge
   if (req.request == "PURGE") {
     if (!client.ip ~ purge) {
