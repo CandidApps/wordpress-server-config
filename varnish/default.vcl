@@ -61,6 +61,7 @@ sub vcl_deliver {
   remove resp.http.X-Varnish;
   remove resp.http.Age;
   remove resp.http.Via;
+  remove resp.http.X-W3TC-Minify;
 }
 
 
