@@ -1,5 +1,6 @@
 # SOURCE: http://wordpress.org/plugins/w3-total-cache/
 
+# /var/www/example.com/public/.htaccess
 # BEGIN W3TC Browser Cache
 <IfModule mod_mime.c>
     AddType text/css .css
@@ -158,6 +159,15 @@
     RewriteRule .* - [L]
 </IfModule>
 # END W3TC Skip 404 error handling by WordPress for static files
+
+
+# BEGIN W3TC CDN
+<FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+</FilesMatch>
+# END W3TC CDN
 
 
 # From /var/www/example.com/public/wp-content/cache/minify/.htaccess
