@@ -16,11 +16,11 @@ define( 'WP_POST_REVISIONS', false );
 # Set autosave interval
 # define( 'AUTOSAVE_INTERVAL', 160 );
 
-# Set Akismet API Key Network-wide (WordPress Multisite)
-# define('WPCOM_API_KEY','your-key');
-
 # Increase PHP memory limit
 # define( 'WP_MEMORY_LIMIT', '64M' );
 
 # Enable Multisite
 # define( 'WP_ALLOW_MULTISITE', true );
+
+# Set Akismet API Key Network-wide (WordPress Multisite)
+# define('WPCOM_API_KEY','your-key');
