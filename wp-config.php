@@ -18,3 +18,6 @@ define( 'WP_POST_REVISIONS', false );
 
 # Increase PHP memory limit
 # define( 'WP_MEMORY_LIMIT', '64M' );
+
+# Enable Multisite
+# define( 'WP_ALLOW_MULTISITE', true );
