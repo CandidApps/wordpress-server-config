@@ -15,4 +15,4 @@ Disallow: */feed/
 Disallow: /*.xml
 Disallow: /*/*.xml # Subdirectory-based Multisite sitemaps
 
-Sitemap: http://whatthenerd.com/sitemap_index.xml
+Sitemap: http://example.com/sitemap_index.xml
