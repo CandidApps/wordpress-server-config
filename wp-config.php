@@ -23,4 +23,4 @@ define( 'WP_POST_REVISIONS', false );
 # define( 'WP_ALLOW_MULTISITE', true );
 
 # Set Akismet API Key Network-wide (WordPress Multisite)
-# define('WPCOM_API_KEY','your-key');
+# define( 'WPCOM_API_KEY', 'your-key' );
