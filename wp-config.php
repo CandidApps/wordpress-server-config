@@ -22,5 +22,11 @@ define( 'WP_POST_REVISIONS', false );
 # Enable Multisite
 # define( 'WP_ALLOW_MULTISITE', true );
 
+# If registration is disabled, set the URL you want to redirect
+# visitors to if they visit a non-existent site (WHATEVER.example.com).
+# Useful For Private Multisite Networks
+# define( 'NOBLOGREDIRECT', '%siteurl%' ); // OR //
+# define( 'NOBLOGREDIRECT', 'http://example.com/' );
+
 # Set Akismet API Key Network-wide (WordPress Multisite)
 # define( 'WPCOM_API_KEY', 'your-key' );
